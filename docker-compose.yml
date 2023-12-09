@@ -1,0 +1,23 @@
+version: "2"
+services:
+  mysqldb:
+    image: mysql
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+  achat:
+    depends_on:
+      - mysqldb
+    build: ./
+    restart: on-failure
+    image: spring-boot
+    ports:
+      - 9091:8089
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+volumes:
+  db:
