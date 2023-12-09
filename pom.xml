@@ -130,6 +130,7 @@
 
 
         </plugins>
+        <finalName>events-project</finalName>
     </build>
 
 </project>
